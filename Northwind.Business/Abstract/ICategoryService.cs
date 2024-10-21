@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Northwind.Business.Abstract
 {
-    public interface IProductService
+    public interface ICategoryService
     {
 
+        List<Category> GetAll();
 
-        List<Product> GetAll();
-        List<Product> GetProductsByCategory(int categoryId);
+
+
     }
 }
