@@ -25,6 +25,14 @@ namespace Northwind.Business.Concrete
                 
         }
 
+        public void Add(Product product)
+        {
+            
+
+            _productDal.Add(product);
+
+
+        }
 
         public List<Product> GetAll()
         {
