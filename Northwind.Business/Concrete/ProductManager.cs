@@ -5,6 +5,7 @@ using Northwind.DataAccess.Concrete.EntityFramework;
 using Northwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -30,6 +31,23 @@ namespace Northwind.Business.Concrete
             
 
             _productDal.Add(product);
+
+
+        }
+
+        public void Delete(Product product)
+        {
+            try
+            {
+                _productDal.Delete(product);
+            }
+            catch
+            {
+
+                throw new Exception("Güncelleme Gerçekleşemedi");
+            }
+           
+
 
 
         }
@@ -65,6 +83,11 @@ namespace Northwind.Business.Concrete
             
             return _productDal.GetAll(p => p.ProductName.ToLower().Contains(productName.ToLower()));
 
+        }
+
+        public void Update(Product product)
+        {
+            _productDal.Update(product);
         }
     }
 }

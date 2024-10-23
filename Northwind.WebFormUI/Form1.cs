@@ -50,6 +50,10 @@ namespace Northwind.WebFormUI
             cbxKategoriEkle.DisplayMember = "CategoryName";
             cbxKategoriEkle.ValueMember = "CategoryId";
 
+            cbxKategoriEkleUpdate.DataSource = _categoryService.GetAll();
+            cbxKategoriEkleUpdate.DisplayMember = "CategoryName";
+            cbxKategoriEkleUpdate.ValueMember = "CategoryId";
+
         }
 
         private void LoadProducts()
@@ -115,6 +119,91 @@ namespace Northwind.WebFormUI
 
             MessageBox.Show("Ürün Kaydedildi");
             LoadProducts();
+        }
+
+        private void btnEkleUpdate_Click(object sender, EventArgs e)
+        {
+
+
+
+
+            _productService.Update(new Product
+            {
+
+
+                ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value),
+                ProductName=tbxBirimUpdate.Text,
+                CategoryId = Convert.ToInt32(cbxKategoriEkleUpdate.SelectedValue),
+                UnitsInStock = Convert.ToInt16(tbxStokUpdate.Text),
+                QuantityPerUnit = tbxBirimUpdate.Text,
+                UnitPrice = Convert.ToDecimal(tbxFiyatUpdate.Text)
+
+
+
+            });
+
+            MessageBox.Show("Ürün Güncellendi");
+            LoadProducts();
+
+
+
+
+        }
+
+        private void dgwProduct_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            var row = dgwProduct.CurrentRow;
+
+            tbxUrunAdiUpdate.Text = row.Cells[1].Value.ToString();
+
+            cbxKategoriEkleUpdate.SelectedValue = row.Cells[2].Value;
+
+            tbxFiyatUpdate.Text = row.Cells[3].Value.ToString();
+            tbxBirimUpdate.Text = row.Cells[4].Value.ToString();
+            tbxStokUpdate.Text = row.Cells[5].Value.ToString();
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dgwProduct.CurrentRow!=null)
+            {
+
+                try
+                {
+
+                    _productService.Delete(new Product
+                    {
+
+
+                        ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value),
+
+
+
+
+
+                    });
+                    MessageBox.Show("Ürün Silindi!");
+                    LoadProducts();
+
+
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                    
+                }
+
+
+
+            }
+
+            
+
+           
+
         }
     }
 }
