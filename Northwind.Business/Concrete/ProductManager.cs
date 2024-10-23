@@ -49,6 +49,14 @@ namespace Northwind.Business.Concrete
 
         }
 
-       
+        public List<Product> GetProductsByProductName(string productName)
+        {
+
+         
+            
+            
+            return _productDal.GetAll(p => p.ProductName.ToLower().Contains(productName.ToLower()));
+
+        }
     }
 }

@@ -30,11 +30,11 @@
         {
             this.dgwProduct = new System.Windows.Forms.DataGridView();
             this.gbCategory = new System.Windows.Forms.GroupBox();
+            this.cbxCategory = new System.Windows.Forms.ComboBox();
             this.lblKategori = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblUrunAdi = new System.Windows.Forms.Label();
-            this.cbxCategory = new System.Windows.Forms.ComboBox();
-            this.cbxProduct = new System.Windows.Forms.ComboBox();
+            this.tbxProductName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwProduct)).BeginInit();
             this.gbCategory.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -61,6 +61,15 @@
             this.gbCategory.TabStop = false;
             this.gbCategory.Text = "Kategoriye Göre Arama";
             // 
+            // cbxCategory
+            // 
+            this.cbxCategory.FormattingEnabled = true;
+            this.cbxCategory.Location = new System.Drawing.Point(98, 58);
+            this.cbxCategory.Name = "cbxCategory";
+            this.cbxCategory.Size = new System.Drawing.Size(287, 24);
+            this.cbxCategory.TabIndex = 3;
+            this.cbxCategory.SelectedIndexChanged += new System.EventHandler(this.cbxCategory_SelectedIndexChanged);
+            // 
             // lblKategori
             // 
             this.lblKategori.AutoSize = true;
@@ -72,7 +81,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbxProduct);
+            this.groupBox2.Controls.Add(this.tbxProductName);
             this.groupBox2.Controls.Add(this.lblUrunAdi);
             this.groupBox2.Location = new System.Drawing.Point(12, 172);
             this.groupBox2.Name = "groupBox2";
@@ -90,22 +99,13 @@
             this.lblUrunAdi.TabIndex = 2;
             this.lblUrunAdi.Text = "Ürün Adı :";
             // 
-            // cbxCategory
+            // tbxProductName
             // 
-            this.cbxCategory.FormattingEnabled = true;
-            this.cbxCategory.Location = new System.Drawing.Point(98, 58);
-            this.cbxCategory.Name = "cbxCategory";
-            this.cbxCategory.Size = new System.Drawing.Size(287, 24);
-            this.cbxCategory.TabIndex = 3;
-            this.cbxCategory.SelectedIndexChanged += new System.EventHandler(this.cbxCategory_SelectedIndexChanged);
-            // 
-            // cbxProduct
-            // 
-            this.cbxProduct.FormattingEnabled = true;
-            this.cbxProduct.Location = new System.Drawing.Point(98, 67);
-            this.cbxProduct.Name = "cbxProduct";
-            this.cbxProduct.Size = new System.Drawing.Size(287, 24);
-            this.cbxProduct.TabIndex = 4;
+            this.tbxProductName.Location = new System.Drawing.Point(98, 70);
+            this.tbxProductName.Name = "tbxProductName";
+            this.tbxProductName.Size = new System.Drawing.Size(287, 22);
+            this.tbxProductName.TabIndex = 3;
+            this.tbxProductName.TextChanged += new System.EventHandler(this.tbxProductName_TextChanged);
             // 
             // Form1
             // 
@@ -135,7 +135,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblUrunAdi;
         private System.Windows.Forms.ComboBox cbxCategory;
-        private System.Windows.Forms.ComboBox cbxProduct;
+        private System.Windows.Forms.TextBox tbxProductName;
     }
 }
 
