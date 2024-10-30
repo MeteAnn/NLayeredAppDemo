@@ -135,25 +135,33 @@ namespace Northwind.WebFormUI
         {
 
 
+            try
+            {
+                _productService.Update(new Product
+                {
 
 
-            _productService.Update(new Product
+                    ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value),
+                    ProductName = tbxBirimUpdate.Text,
+                    CategoryId = Convert.ToInt32(cbxKategoriEkleUpdate.SelectedValue),
+                    UnitsInStock = Convert.ToInt16(tbxStokUpdate.Text),
+                    QuantityPerUnit = tbxBirimUpdate.Text,
+                    UnitPrice = Convert.ToDecimal(tbxFiyatUpdate.Text)
+
+
+
+                });
+
+                MessageBox.Show("Ürün Güncellendi");
+                LoadProducts();
+            }
+            catch (Exception exception)
             {
 
+                MessageBox.Show(exception.Message);
+            }
 
-                ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value),
-                ProductName=tbxBirimUpdate.Text,
-                CategoryId = Convert.ToInt32(cbxKategoriEkleUpdate.SelectedValue),
-                UnitsInStock = Convert.ToInt16(tbxStokUpdate.Text),
-                QuantityPerUnit = tbxBirimUpdate.Text,
-                UnitPrice = Convert.ToDecimal(tbxFiyatUpdate.Text)
-
-
-
-            });
-
-            MessageBox.Show("Ürün Güncellendi");
-            LoadProducts();
+            
 
 
 
