@@ -1,15 +1,18 @@
 ﻿using Northwind.Business.Abstract;
+using Northwind.Business.ValidationRules.FluentValidation;
 using Northwind.DataAccess.Abstract;
 using Northwind.DataAccess.Concrete;
 using Northwind.DataAccess.Concrete.EntityFramework;
 using Northwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
 
 namespace Northwind.Business.Concrete
 {
@@ -29,7 +32,16 @@ namespace Northwind.Business.Concrete
         public void Add(Product product)
         {
             
+            ProductValidator productValidator = new ProductValidator();
+            var result = productValidator.Validate(product);
+            if (result.Errors.Count>0)
+            {
 
+
+                throw new FluentValidation.ValidationException(result.Errors);
+               
+
+            }
             _productDal.Add(product);
 
 
